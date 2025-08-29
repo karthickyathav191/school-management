@@ -1,4 +1,4 @@
-import { Express, Request } from 'express'
+import { Express } from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
@@ -7,7 +7,7 @@ const initMiddlewares = (app: Express) => {
   app.use(cors())
   app.use(bodyParser.json())
   // Auth middleware
-  app.use((req: Request, res, next) => {
+  app.use((req, res, next) => {
     const unSecuredPaths = ["/register", "/login"]
     if (unSecuredPaths.some(item => req.path.includes(item))) {
       return next()
