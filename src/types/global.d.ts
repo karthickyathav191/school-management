@@ -7,7 +7,5 @@ declare namespace Express {
 }
 
 declare global {
-  type Controller = {
-    [key: string]: (req: Request, res: Response) => void
-  }
+  type RouteCB = (req: Request, res: Response) => void
 }

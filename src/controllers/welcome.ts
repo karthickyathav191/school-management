@@ -1,6 +1,5 @@
 import xlsx from 'xlsx'
-import { Request, Response } from 'express'
-import DB from '../utils/db'
+import DB from '@/utils/db'
 
 type InsertStudentData = {
   Name: string
@@ -8,8 +7,12 @@ type InsertStudentData = {
   Section: string
 }
 
-const welcome = {
-  upload: async (req: Request, res: Response) => {
+type WelcomeController = {
+  upload: RouteCB
+}
+
+const welcome: WelcomeController = {
+  upload: async (req, res) => {
     const workBook = xlsx.read(req?.file?.buffer, { type: 'buffer' }),
       sheetJsonData: InsertStudentData[] = xlsx.utils.sheet_to_json(workBook.Sheets['Sheet1'])
       const records = sheetJsonData.map(({ Name, Standard, Section }) => [1, Name, Standard, Section], sheetJsonData),

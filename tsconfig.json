@@ -9,7 +9,10 @@
     "skipLibCheck": true,
     "noImplicitAny": true,
     "declaration": true,
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules"],
